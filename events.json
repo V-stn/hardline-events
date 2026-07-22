@@ -52,6 +52,38 @@
     "id": "dominatorfatalfortune-2026-07-17"
   },
   {
+    "name": "MOST WANTED EVENT 2026 - Electronic Dance Day",
+    "venue": "Festplatz Kaltenkirchen",
+    "city": "Kaltenkirchen",
+    "country": "DE",
+    "start": "2026-07-24",
+    "end": "2026-07-24",
+    "genres": [
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.ticketmaster.de/event/most-wanted-event-2026-electronic-dance-day-tickets/1878207675?language=en-us",
+    "id": "mostwantedevent2026electronicdanceday-2026-07-24"
+  },
+  {
+    "name": "MOST WANTED EVENT 2026 - Wochenendticket 24. + 25.07.2026",
+    "venue": "Festplatz Kaltenkirchen",
+    "city": "Kaltenkirchen",
+    "country": "DE",
+    "start": "2026-07-25",
+    "end": "2026-07-25",
+    "genres": [
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.ticketmaster.de/event/most-wanted-event-2026-wochenendticket-24--25072026-tickets/369920966?language=en-us",
+    "id": "mostwantedevent2026wochenendticket2425072026-2026-07-25"
+  },
+  {
     "name": "Decibel outdoor",
     "venue": "Safaripark Beekse Bergen",
     "city": "Hilvarenbeek",
@@ -69,5 +101,53 @@
     "note": "300+ artists, 'The Loudest City'",
     "url": "https://www.decibeloutdoor.com",
     "id": "decibeloutdoor-2026-08-28"
+  },
+  {
+    "name": "SYNTHONY",
+    "venue": "Venue TBA",
+    "city": "Amsterdam",
+    "country": "NL",
+    "start": "2026-10-02",
+    "end": "2026-10-02",
+    "genres": [
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.ticketmaster.nl/event/synthony-tickets/159556912?language=en-us",
+    "id": "synthony-2026-10-02"
+  },
+  {
+    "name": "Kochkraft durch KMA - Hardcore never dies das Tour 2026",
+    "venue": "Elfer Music Club",
+    "city": "Frankfurt am Main",
+    "country": "DE",
+    "start": "2026-10-28",
+    "end": "2026-10-28",
+    "genres": [
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.universe.com/events/kochkraft-durch-kma-hardcore-never-dies-das-tour-2026-tickets-3CYM7H?ref=ticketmaster",
+    "id": "kochkraftdurchkmahardcoreneverdiesdastour2026-2026-10-28"
+  },
+  {
+    "name": "MAYDAY Poland \"ICONIC\"",
+    "venue": "Spodek",
+    "city": "Katowice",
+    "country": "PL",
+    "start": "2026-11-10",
+    "end": "2026-11-10",
+    "genres": [
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.ticketmaster.pl/event/mayday-poland-iconic-tickets/529155917?language=en-us",
+    "id": "maydaypolandiconic-2026-11-10"
   }
 ]
