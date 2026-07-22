@@ -20,6 +20,7 @@ regex needs a look. Check the Action's log output for the raw text sample it pri
 """
 
 import json
+import os
 import re
 import sys
 import time
@@ -142,6 +143,82 @@ def scrape_all_djguide(today: date) -> list[dict]:
 # in GitHub's mobile web editor whenever a new date is announced)
 # ---------------------------------------------------------------------------
 
+# ---------------------------------------------------------------------------
+# Source 2: Ticketmaster Discovery API — a real, official API (not scraping),
+# so it doesn't hit the datacenter-IP blocking that killed the djguide approach.
+# Free key from https://developer.ticketmaster.com/ — set as TICKETMASTER_API_KEY
+# in the repo's Actions secrets.
+# ---------------------------------------------------------------------------
+
+TM_API_KEY = os.environ.get("TICKETMASTER_API_KEY", "")
+TM_COUNTRIES = ["NL", "BE", "DE", "PL"]  # expand this list for other markets you care about
+
+
+def scrape_ticketmaster() -> list[dict]:
+    if not TM_API_KEY:
+        print("[ticketmaster] no TICKETMASTER_API_KEY set, skipping this source", file=sys.stderr)
+        return []
+
+    events = []
+    for genre in GENRE_QUERIES:
+        for country in TM_COUNTRIES:
+            url = "https://app.ticketmaster.com/discovery/v2/events.json"
+            params = {
+                "keyword": genre,
+                "countryCode": country,
+                "apikey": TM_API_KEY,
+                "size": 50,
+                "sort": "date,asc",
+            }
+            try:
+                resp = requests.get(url, params=params, timeout=20)
+                resp.raise_for_status()
+                data = resp.json()
+            except requests.RequestException as e:
+                print(f"[ticketmaster] request failed for '{genre}' in {country}: {e}", file=sys.stderr)
+                continue
+            except ValueError:
+                print(f"[ticketmaster] non-JSON response for '{genre}' in {country}", file=sys.stderr)
+                continue
+
+            raw_events = data.get("_embedded", {}).get("events", [])
+            for ev in raw_events:
+                try:
+                    start = ev["dates"]["start"]["localDate"]
+                except KeyError:
+                    continue
+                venue_info = {}
+                try:
+                    venue_info = ev["_embedded"]["venues"][0]
+                except (KeyError, IndexError):
+                    pass
+
+                events.append({
+                    "name": ev.get("name", "Unknown event"),
+                    "venue": venue_info.get("name", "Venue TBA"),
+                    "city": venue_info.get("city", {}).get("name", "Unknown"),
+                    "country": venue_info.get("country", {}).get("countryCode", country),
+                    "start": start,
+                    "end": start,  # Ticketmaster lists multi-day festivals as separate day entries;
+                                   # dedupe below merges same-name entries within a few days into one
+                    "genres": [genre],
+                    "status": "confirmed",
+                    "sample": False,
+                    "note": "",
+                    "url": ev.get("url", ""),
+                    "source": "ticketmaster",
+                })
+            time.sleep(0.3)  # stay comfortably under rate limits
+
+    print(f"[ticketmaster] total raw matches: {len(events)}")
+    return events
+
+
+# ---------------------------------------------------------------------------
+# Source 3: curated major festivals (hand-maintained — edit this list directly
+# in GitHub's mobile web editor whenever a new date is announced)
+# ---------------------------------------------------------------------------
+
 CURATED_FESTIVALS = [
     {
         "name": "Dominator — Fatal Fortune",
@@ -226,10 +303,12 @@ def dedupe(events: list[dict]) -> list[dict]:
 def main():
     today = date.today()
 
-    scraped = scrape_all_djguide(today)
-    print(f"[djguide] total raw matches across all genres: {len(scraped)}")
+    scraped_djguide = scrape_all_djguide(today)
+    print(f"[djguide] total raw matches across all genres: {len(scraped_djguide)}")
 
-    combined = dedupe(CURATED_FESTIVALS + scraped)
+    scraped_tm = scrape_ticketmaster()
+
+    combined = dedupe(CURATED_FESTIVALS + scraped_tm + scraped_djguide)
     combined.sort(key=lambda e: e["start"])
 
     for i, ev in enumerate(combined):
