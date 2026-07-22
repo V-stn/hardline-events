@@ -1,0 +1,73 @@
+[
+  {
+    "name": "Masters of Hardcore — Tides of Tyranny",
+    "venue": "Brabanthallen",
+    "city": "'s-Hertogenbosch",
+    "country": "NL",
+    "start": "2026-03-28",
+    "end": "2026-03-28",
+    "genres": [
+      "hardcore",
+      "frenchcore",
+      "uptempo"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "",
+    "url": "https://www.mastersofhardcore.com",
+    "id": "mastersofhardcoretidesoftyranny-2026-03-28"
+  },
+  {
+    "name": "Defqon.1 — Sacred Oath",
+    "venue": "Walibi Holland grounds",
+    "city": "Biddinghuizen",
+    "country": "NL",
+    "start": "2026-06-25",
+    "end": "2026-06-28",
+    "genres": [
+      "hardstyle",
+      "hardcore"
+    ],
+    "status": "cancelled",
+    "sample": false,
+    "note": "Cancelled by Q-dance after KNMI weather warnings",
+    "url": "https://defqon1.com",
+    "id": "defqon1sacredoath-2026-06-25"
+  },
+  {
+    "name": "Dominator — Fatal Fortune",
+    "venue": "E3 Strand",
+    "city": "Eersel",
+    "country": "NL",
+    "start": "2026-07-17",
+    "end": "2026-07-18",
+    "genres": [
+      "hardcore",
+      "uptempo"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "20th anniversary, 10 stages",
+    "url": "https://dominatorfestival.com",
+    "id": "dominatorfatalfortune-2026-07-17"
+  },
+  {
+    "name": "Decibel outdoor",
+    "venue": "Safaripark Beekse Bergen",
+    "city": "Hilvarenbeek",
+    "country": "NL",
+    "start": "2026-08-28",
+    "end": "2026-08-30",
+    "genres": [
+      "hardstyle",
+      "hardcore",
+      "rawstyle",
+      "uptempo"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "300+ artists, 'The Loudest City'",
+    "url": "https://www.decibeloutdoor.com",
+    "id": "decibeloutdoor-2026-08-28"
+  }
+]
