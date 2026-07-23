@@ -21,9 +21,6 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
-      - name: Install Playwright browser
-        run: playwright install --with-deps chromium
-
       - name: Run scraper
         env:
           TICKETMASTER_API_KEY: ${{ secrets.TICKETMASTER_API_KEY }}
