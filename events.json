@@ -28,9 +28,9 @@
       "hardstyle",
       "hardcore"
     ],
-    "status": "cancelled",
+    "status": "confirmed",
     "sample": false,
-    "note": "Cancelled by Q-dance after KNMI weather warnings",
+    "note": "Ran as planned Thu-Sun, but Q-dance cut the remaining days short partway through due to KNMI weather warnings",
     "url": "https://defqon1.com",
     "id": "defqon1sacredoath-2026-06-25"
   },
@@ -149,5 +149,22 @@
     "note": "",
     "url": "https://www.ticketmaster.pl/event/mayday-poland-iconic-tickets/529155917?language=en-us",
     "id": "maydaypolandiconic-2026-11-10"
+  },
+  {
+    "name": "Reverze 2027",
+    "venue": "AFAS Dome & Lotto Arena",
+    "city": "Antwerp",
+    "country": "BE",
+    "start": "2027-02-26",
+    "end": "2027-02-27",
+    "genres": [
+      "hardstyle",
+      "hardcore"
+    ],
+    "status": "confirmed",
+    "sample": false,
+    "note": "Europe's biggest indoor hardstyle festival, organised by Bass Events",
+    "url": "https://www.reverze.be",
+    "id": "reverze2027-2027-02-26"
   }
 ]
