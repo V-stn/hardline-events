@@ -309,8 +309,9 @@ CURATED_FESTIVALS = [
         "venue": "Walibi Holland grounds", "city": "Biddinghuizen", "country": "NL",
         "start": "2026-06-25", "end": "2026-06-28",
         "genres": ["hardstyle", "hardcore"],
-        "status": "cancelled", "sample": False,
-        "note": "Cancelled by Q-dance after KNMI weather warnings",
+        "status": "confirmed", "sample": False,
+        "note": "Ran as planned Thu-Sun, but Q-dance cut the remaining days short "
+                "partway through due to KNMI weather warnings",
         "url": "https://defqon1.com", "source": "curated",
     },
     {
@@ -330,6 +331,15 @@ CURATED_FESTIVALS = [
         "status": "confirmed", "sample": False,
         "note": "",
         "url": "https://www.mastersofhardcore.com", "source": "curated",
+    },
+    {
+        "name": "Reverze 2027",
+        "venue": "AFAS Dome & Lotto Arena", "city": "Antwerp", "country": "BE",
+        "start": "2027-02-26", "end": "2027-02-27",
+        "genres": ["hardstyle", "hardcore"],
+        "status": "confirmed", "sample": False,
+        "note": "Europe's biggest indoor hardstyle festival, organised by Bass Events",
+        "url": "https://www.reverze.be", "source": "curated",
     },
     # Add more here as you confirm real dates — same shape as above.
 ]
@@ -383,7 +393,12 @@ def main():
 
     scraped_tm = scrape_ticketmaster()
 
-    scraped_pf = scrape_partyflock(today)
+    # Disabled: Partyflock/Appic blocks GitHub Actions' IPs at the network level
+    # (confirmed via a raw nginx 403, before any JS even loads) — no client-side
+    # fix for this. Left in place in case you want to re-enable it later via a
+    # proxy service; just uncomment the line below.
+    # scraped_pf = scrape_partyflock(today)
+    scraped_pf = []
 
     combined = dedupe(CURATED_FESTIVALS + scraped_tm + scraped_djguide + scraped_pf)
     combined.sort(key=lambda e: e["start"])
